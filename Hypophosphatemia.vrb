@@ -1,0 +1,35 @@
+\frametitle{Penrose Triangle of hormones }
+\begin{center}
+ ^^I^^I^^I\begin{tikzpicture}[scale=1, line join=bevel]
+
+ ^^I^^I% \a and \b are two macros defining characteristic
+ ^^I^^I% dimensions of the Penrose triangle.
+ ^^I^^I\pgfmathsetmacro{\a}{1.8}
+ ^^I^^I\pgfmathsetmacro{\b}{0.7}
+
+ ^^I^^I\tikzset{%
+ ^^I^^I^^Iapply style/.code     = {\tikzset{#1}},
+ ^^I^^I^^Itriangle_edges/.style = {thick,draw=black}
+ ^^I^^I}
+
+ ^^I^^I\foreach \theta/\facestyle/\city/\al\/\ang in {%
+ ^^I^^I^^I0/{triangle_edges, fill = gray!50}/Bone/below/-60,
+ ^^I^^I^^I120/{triangle_edges, fill = gray!25}/Kidney/below/60,
+ ^^I^^I^^I240/{triangle_edges, fill = gray!90}/Gut/above/0}
+ ^^I^^I{
+ ^^I^^I^^I\begin{scope}[rotate=\theta]
+ ^^I^^I^^I\draw[apply style/.expand once=\facestyle]
+ ^^I^^I^^I({-sqrt(3)/2*\a},{-0.5*\a})                   --
+ ^^I^^I^^I++  (-\b,0)                                   --
+ ^^I^^I^^I({0.5*\b},{\a+3*sqrt(3)/2*\b})                --node[\al,rotate=\ang]{\city} % higher point
+ ^^I^^I^^I({sqrt(3)/2*\a+2.5*\b},{-.5*\a-sqrt(3)/2*\b}) -- % rightmost point
+ ^^I^^I^^I++({-.5*\b},-{sqrt(3)/2*\b})                    -- % lower point
+ ^^I^^I^^I({0.5*\b},{\a+sqrt(3)/2*\b})                  --
+ ^^I^^I^^Icycle;
+ ^^I^^I^^I\end{scope}
+ ^^I^^I}
+ ^^I\onslide<2>{\node(fgf) at (0.2,4) {FGF23};}
+ ^^I\node(phosphate) at (0,0) {Phosphate};
+ ^^I\onslide<2>{\node(PTH) at (-3.7,-2.2) {PTH};}
+ ^^I\onslide<2>{\node(calcitriol) at (4,-2.2){Calcitriol};} ^^I^^I\end{tikzpicture}
+ ^^I\end{center}

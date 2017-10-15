@@ -1,0 +1,320 @@
+\documentclass[compress]{beamer}
+
+\usetheme{Antibes}
+\usepackage{bclogo}
+\usepackage{framed}
+%---------------------------------------------------------------------------------- 
+\newenvironment {gbar}[1]{ %
+	\def \FrameCommand {{\color {#1}\vrule width 2pt}\colorbox {gray!20}} %
+	\MakeFramed {\advance\hsize -\width  \FrameRestore }} %
+{\endMakeFramed}
+%---------------------------------------------------------------------------------- 
+\usepackage[style=authoryear,url=false,isbn=false,backend=biber,doi=false]{biblatex}
+\addbibresource{mybib.bib}
+\setbeamercolor{structure}{fg=red!60!black}
+\setbeamercolor{block title}{bg=black}
+\setbeamercolor{frametitle}{bg=white,fg=black}
+\useinnertheme{circles}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+\usepackage{emojione}
+\usepackage{soul}
+
+\usepackage{fontspec}
+\setsansfont{Linux Biolinum O}
+\newcommand{\at}{\makeatletter @\makeatother}
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\graphicspath{{F:/Official/Talks/Hypophosphatemia/osteomalacia/}}
+%----------------------------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{} 
+%---------------------------------------------------------------------------------- 
+\setbeamercolor{bibliography entry author} {fg=black!70}
+\setbeamercolor{bibliography entry title} {fg=black!70}
+\setbeamercolor{bibliography entry location} {fg=black!70}
+\setbeamercolor{bibliography entry note} {fg=black!70}
+\newcommand*\myitem{%
+	\item[\color{teal!60!black}\scalebox{0.9}{\textbullet}]}
+\setbeamerfont{footnote}{size=\scriptsize}
+\usepackage{tikz}
+ \renewcommand\arraystretch{1.3}
+ \newcommand{\myred}[1]{\textcolor{red!60!black}{#1}}
+ %---------------------------------------------------------------------------------- 
+\tikzset{
+	treenode/.style = {shape=rectangle, rounded corners,
+		draw, align=center,
+		top color=white, bottom color=blue!20},
+	root/.style     = {treenode, bottom color=purple!40},
+	env/.style      = {treenode, font=\scriptsize},
+	dummy/.style    = {circle,draw}
+}
+ 
+%----------------------------------------------------------------------------------
+\author[Karthik]{Karthik Balachandran}
+\title{Hypophosphatemia}
+\subtitle{Approach in India}
+\date{}
+\institute[SRMC]{Sri Ramachandra Medical College \\ Chennai}
+%----------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+
+%----------------------------------------------------------------------------------
+\section{Background}
+%---------------------------------------------------------------------------------- 
+%---------------------------------------------------------------------------------- 
+\begin{frame}{Hypophosphatemia }
+\begin{block}{Definition}
+	Serum phosphate $<$ 2.5 mg/dl
+\end{block}
+\pause
+\begin{bclogo} [logo=\bcattention,barre=none,noborder=true]{Beware}
+	\begin{gbar} {teal}
+		Infants have higher values.\\
+		$ \therefore Normal \implies Abnormality $
+	\end{gbar}
+\end{bclogo}
+
+\end{frame}
+%----------------------------------------------------------------------------------
+
+\begin{frame}{ Hypophosphatemia -Severity }
+	  \begin{description}[Moderate]
+		\item[Mild]  $2 - 2.5 mg/dl $
+		\item[Moderate]  $ 1- 2 mg/dl $
+		\item[Severe]  $ < 1 mg/dl $
+	\end{description}
+\end{frame}
+%----------------------------------------------------------------------------------
+\begin{frame}{ Epidemiology }
+	\begin{itemize}
+		\item Upto 5\% of hospitalized patients 
+		\item 0.5\% of them severe
+		\item Chronic hypophosphatemia - limited data
+	\end{itemize}
+\end{frame} 
+%----------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------- 
+\section{Phosphate biology}
+\begin{frame}{How is phosphate regulated\footfullcite{Torres.2011}?  }
+	\begin{center}
+		\includegraphics[scale=0.7]{physiology.jpg}
+	\end{center}
+	
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+%----------------------------------------------------------------------------------
+\begin{frame}[fragile]{Penrose Triangle of hormones  }
+ 	\begin{center}
+ 			\begin{tikzpicture}[scale=1, line join=bevel]
+ 		
+ 		% \a and \b are two macros defining characteristic
+ 		% dimensions of the Penrose triangle.       
+ 		\pgfmathsetmacro{\a}{1.8}
+ 		\pgfmathsetmacro{\b}{0.7}
+ 		
+ 		\tikzset{%
+ 			apply style/.code     = {\tikzset{#1}},
+ 			triangle_edges/.style = {thick,draw=black}
+ 		}
+ 		
+ 		\foreach \theta/\facestyle/\city/\al\/\ang in {%
+ 			0/{triangle_edges, fill = gray!50}/Bone/below/-60,
+ 			120/{triangle_edges, fill = gray!25}/Kidney/below/60,
+ 			240/{triangle_edges, fill = gray!90}/Gut/above/0}
+ 		{
+ 			\begin{scope}[rotate=\theta]
+ 			\draw[apply style/.expand once=\facestyle]
+ 			({-sqrt(3)/2*\a},{-0.5*\a})                   --
+ 			++  (-\b,0)                                   --
+ 			({0.5*\b},{\a+3*sqrt(3)/2*\b})                --node[\al,rotate=\ang]{\city} % higher point 
+ 			({sqrt(3)/2*\a+2.5*\b},{-.5*\a-sqrt(3)/2*\b}) -- % rightmost point
+ 			++({-.5*\b},-{sqrt(3)/2*\b})                    -- % lower point
+ 			({0.5*\b},{\a+sqrt(3)/2*\b})                  --
+ 			cycle;
+ 			\end{scope}
+ 		} 
+ 	\onslide<2>{\node(fgf) at (0.2,4) {FGF23};}
+ 	\node(phosphate) at (0,0) {Phosphate};
+ 	\onslide<2>{\node(PTH) at (-3.7,-2.2) {PTH};}
+ 	\onslide<2>{\node(calcitriol) at (4,-2.2){Calcitriol};} 		\end{tikzpicture}
+ 	\end{center}
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+\begin{frame}{It takes three to tango  }
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+	\centering
+	\begin{tabular}{rccc}
+		\toprule
+		Hormone    & Kidney & Gut & Bone \\ \midrule
+		FGF23      & \emojifrowningtwo      & \emojifrowningtwo  & \emojibangbang    \\ \pause
+		PTH        & \emojifrowningtwo      & \emojismiley  & \emojismiley   \\ 
+		\pause
+		Calcitriol & \emojismiley     & \emojismiley  &   \emojismiley  \\ \bottomrule
+	\end{tabular}
+\end{table}
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+\section{Cases}
+\subsection{Case 1}
+\input{case1.tex}
+%----------------------------------------------------------------------------------
+\section{Scenarios}
+\begin{frame}{I can't do FGF 23 !  }
+\begin{tikzpicture}
+[
+grow                    = right,
+sibling distance        = 5em,
+level distance          = 8em,
+edge from parent/.style = {draw, -latex},
+every node/.style       = {font=\footnotesize},
+sloped
+]
+\node [root] {Phosphaturia}
+child { node [env] {FGF23}
+	edge from parent node [below] {available?} }
+child { node [dummy] {}
+	child { node [dummy] {}
+		child { node [root] {FGF mediated}
+			edge from parent node [below] {Suppressed} }
+		child { node [root] {FGF mediated}
+			edge from parent node [above] { Normal}
+			node [below] {} }
+		child { node [env] {HHRH}
+			edge from parent node [above] {High?} }
+		edge from parent node [below] {Calcitriol?} }
+	child { node [env] {Hyperparathyroidism}
+		edge from parent node [above, align=center]
+		{High }
+		node [below] {PTH}}
+	edge from parent node [above] {Not available?} };
+\end{tikzpicture}
+\end{frame}
+%---------------------------------------------------------------------------------- 
+\begin{frame}{Tumor not found \emojicry  }
+	\begin{itemize}
+		\item Wait for it to show up
+		\item Supplement Phosphate (40 mg/kg/day) in divided doses
+		\item Give Calcitriol at 1- 3 $\mu g/day $
+	\end{itemize}
+\medskip
+\pause
+\begin{bclogo} [logo=\bcbombe,barre=none,noborder=true]{Watch out}
+	\begin{itemize}
+		\item Secondary hyperparathyroidism
+		\item Nephrocalcinosis
+	\end{itemize}
+\end{bclogo}
+
+\end{frame} 
+%----------------------------------------------------------------------------------
+\begin{frame}{ Tumor inoperable \emojicry }
+	\begin{itemize}
+		\item Radiofrequency ablation \footfullcite{Jadhav.2014}
+		\begin{itemize}
+			\item Close to joint
+			\item Inside bone
+			\item Multifocal
+		\end{itemize}
+		\item Octreotide
+		\item Total parathyroidectomy \footfullcite{Bhadada.2013}
+		\item Anti FGF 23 antibodies 
+		\item PPRT
+	
+	\end{itemize}
+\end{frame} 
+%----------------------------------------------------------------------------------  
+\section{Case 2} 
+\begin{frame}{Case 2  }
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\includegraphics[scale=0.6]{case2}
+		\end{column}
+		
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Similar biochemical picture
+				\item Deformities started in childhood
+				\item Strong family history
+				\item Dental abscess
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+\begin{frame}{Clinical Details  }
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.7\textheight]{pedigree.png}
+		\caption{Family Tree}
+	\end{figure}
+	
+\end{frame} 
+%----------------------------------------------------------------------------------
+\begin{frame}{Clinical Details \footfullcite{Kumar.2015}  }
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{osteomalacia/iom}
+		\caption{Anterior interosseous membrane calcification}
+		\label{fig:iom}
+	\end{figure}
+	
+\end{frame}  
+%---------------------------------------------------------------------------------- 
+
+\begin{frame}[shrink]{Approach  }
+\begin{table}[h]
+	\centering
+	\caption{\textit{Calcipenic vs Phosphopenic rickets}}
+	\begin{tabular}{@{}lp{3.5cm}l@{}}
+		\toprule
+		Feature                             & Calcipenic rickets & Phosphopenic rickets   \\ \midrule
+		Muscle weakness                     & Present            & Absent(except in TIO)  \\
+		Bony pain                           & Common             & Uncommon               \\
+		Extremities involved                & All limbs equally  & \myred{Lower limb predominant} \\
+		Tetany                              & May be present     & Absent                 \\
+		Enamel hypoplasia                   & May be present     & Absent                 \\
+		Dental abcess                       & Absent             & \myred{May be present}         \\
+		Family history                      & Less common        &  \myred{ More common}           \\
+		Interosseous membrane calcification & Absent             & \myred{May be present}         \\
+		Enthesopathy                        & Absent             & \myred{May be present }        \\ \bottomrule
+	\end{tabular}
+\end{table}
+\end{frame} 
+%----------------------------------------------------------------------------------
+\begin{frame}{Diagnosis  }
+	\center X linked Hypophosphatemic Rickets
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+\section{Conclusion}
+\begin{frame}{  }
+	\begin{block}{Take home}
+		\begin{itemize}
+			\item History,Clinical Examination and basic labs are the most important tools
+			\item First principles approach and judicious use of 'fancy' investigations
+			\item Multidisciplinary care is important
+		\end{itemize}
+	\end{block}
+\end{frame} 
+%----------------------------------------------------------------------------------  
+\begin{frame}{ }
+	\begin{center}
+		\Huge {Thank You\emojismile}
+	\end{center} 
+\begin{textblock}{1}[0,0](0.1,0.9) 
+	 \scriptsize Slides and source available \at \texttt{www.github.com/karthikjipmer}
+\end{textblock}
+\end{frame} 
+%---------------------------------------------------------------------------------- 
+
+\end{document}
+
